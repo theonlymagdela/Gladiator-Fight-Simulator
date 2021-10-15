@@ -2,11 +2,15 @@ package com.codecool.gladiator.util;
 
 import java.util.Random;
 
-public class RandomUtils {
+public class RandomUtil {
 
     private static final Random RANDOM = new Random();
 
-    public int randomNumber(int i) {
+    public static int randomNumber(int i) {
         return RANDOM.nextInt(i);
+    }
+
+    public static double randomDouble() {
+        return RANDOM.nextDouble();
     }
 }

@@ -1,12 +1,13 @@
 package com.codecool.gladiator.model.gladiators;
 
+import com.codecool.gladiator.util.RandomUtil;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Random;
 
 public class GladiatorFactory {
 
@@ -15,7 +16,6 @@ public class GladiatorFactory {
     private static final int NUMBER_OF_LEVELS = 5;
 
     private List<String> names;
-    Random random = new Random();
 
     public GladiatorFactory(String fileOfNames) {
         try {
@@ -33,15 +33,15 @@ public class GladiatorFactory {
      * @return gladiator name
      */
     private String getRandomName() {
-        return names.get(random.nextInt(names.size()));
+        return names.get(RandomUtil.randomNumber(names.size()));
     }
 
     private int getRandomPoints() {
-        return random.nextInt(MAX_POINTS - MIN_POINTS) + MIN_POINTS;
+        return RandomUtil.randomNumber(MAX_POINTS - MIN_POINTS) + MIN_POINTS;
     }
 
     private int getRandomLevel() {
-        return random.nextInt(NUMBER_OF_LEVELS) + 1;
+        return RandomUtil.randomNumber(NUMBER_OF_LEVELS) + 1;
     }
 
     /**
@@ -59,6 +59,6 @@ public class GladiatorFactory {
         gladiators.add(new Swordsman(getRandomName(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomLevel()));
         gladiators.add(new Swordsman(getRandomName(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomLevel()));
 
-        return gladiators.get(random.nextInt(gladiators.size()));
+        return gladiators.get(RandomUtil.randomNumber(gladiators.size()));
     }
 }

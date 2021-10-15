@@ -1,10 +1,10 @@
 package com.codecool.gladiator.model;
 
 import com.codecool.gladiator.model.gladiators.Gladiator;
+import com.codecool.gladiator.util.RandomUtil;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Combat class, used for simulating fights between pairs of gladiators
@@ -13,8 +13,6 @@ public class Combat {
 
     private final Gladiator gladiator1;
     private final Gladiator gladiator2;
-
-    Random random = new Random();
 
     private final List<String> combatLog;
 
@@ -80,7 +78,8 @@ public class Combat {
         } else {
             value = gladiator2.getGladiatorsMaxDex() - gladiator1.getGladiatorsMaxDex();
         }
-        return random.nextInt(101) < clamp(value);
+
+        return RandomUtil.randomNumber(101) < clamp(value);
     }
 
     public int clamp(int val) {
@@ -97,7 +96,7 @@ public class Combat {
         double rangeMin = 0.1;
         double rangeMax = 0.5;
 
-        return rangeMin + ((rangeMax - rangeMin) * random.nextDouble());
+        return rangeMin + ((rangeMax - rangeMin) * RandomUtil.randomDouble());
     }
 
     public Gladiator attackerSwitch(Gladiator attacker) {
