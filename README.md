@@ -1,5 +1,7 @@
 # Gladiator
 
+Solo project from OOP module at [codecool](https://codecool.com/en/)
+
 ## Story
 
 ### An email from the client
@@ -112,40 +114,3 @@ Swordsman Jupiter has died, Brutal Nero wins!
     - Burning - there is a 15% chance that upon receiving a hit, the enemy is set on fire and will be receiving additional damage for a random amount of turns (in range `[1-5]`) (5% of his available HP per turn). If set on fire again, the duration of the burning is extended by a random amount of turns (in range `[1-5]`)
     - Paralyzing - there is a 10% chance that upon receiving a hit, the enemy is paralyzed which makes him unable to attack and to defend himself during the next 3 turns (so effectively skips 3 attacks and receives 3 hits for sure). If paralyzed again, the duration of the paralyzed state is reset to 3 turns
     - Using the weapon effect system you have implemented, create an effect of your own. Will it be freezing, magic, or something else? Be creative!
-
-## General requirements
-
-None
-
-## Hints
-
-- As you may have noticed, there are a lot of numbers in this project.
-  Don't just put them into your code without explanation. Remember, using
-  "magic numbers" is bad practice!
-- Manage all randomization through the pre-created static `Random` object
-  in `Utils`. In this case, if a "random seed" is provided to the `Random`
-  constructor, the tournament will be _exactly_ reproducible. Check it out!
-- The `Colosseum` class is provided with a View and a `GladiatorFactory`
-  instance. It does not have to worry about either the details or the
-  instantiation of these objects. This pattern is called _dependency
-  injection_, the best way to decouple parts of our code. You'll hear
-  a lot about this later on.
-- The hardest part of this project is to build up the Tournament tree, and also the "execution" of combats. 
-  The Tournament itself is a recursive structure, and both processes require a recursive approach.
-  Some example use cases with explanation should make it easier to understand.
-  - When a Tournament with just 1 pair of contestants is created, `leftBranch` and `rightBranch` remain uninitialized, for we don't need them yet.
-  - When the second pair is added, we divide the Tournament in 2 branches. Old value (first pair) becomes value of the `leftBranch`, and the new pair gets to be the value of `rightBranch`. At this point we have 3 instances of the Tournament - first one, and its 2 branches. Last thing to do now is to assign `null` as the value of the first Tournament. Later on, this will be swapped for winners of subbranches.
-  - When more contestants are added, our job is to add them on each side evenly, to keep the Tournament balanced. We do it simply by calling `add()` method on the `leftBranch` and the `rightBranch` alternately.
-
-## Starting your project
-
-
-
-## Background materials
-
-- [Model-view-controller](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
-- [How to design classes](project/curriculum/materials/pages/java/how-to-design-classes.md)
-- [Enums](project/curriculum/materials/pages/java/enums.md)
-- [Polymorphism](project/curriculum/materials/pages/java/polymorphism.md)
-- [Polymorphism](https://www.tutorialspoint.com/java/java_polymorphism.htm)
-- [Random seed](https://en.wikipedia.org/wiki/Random_seed)
